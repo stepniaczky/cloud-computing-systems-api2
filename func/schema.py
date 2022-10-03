@@ -10,3 +10,4 @@ class Query(graphene.ObjectType):
     def resolve_goodbye(self, info):
         return 'See ya!'
     
+    
