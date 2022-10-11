@@ -23,4 +23,5 @@ app.add_route("/api", GraphQLApp(schema=schema,
 
 
 async def main(req: func.HttpRequest, context: func.Context) -> func.HttpResponse:
-    return func.AsgiMiddleware(app).handle(req, context)
+    # return func.AsgiMiddleware(app).handle(req, context)
+    return func.HttpResponse("Hello World")
