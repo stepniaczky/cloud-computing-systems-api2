@@ -12,7 +12,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=["http://localhost:3000", "https://turbo-barber-api.azurewebsites.net"],
     allow_methods=["*"],
     allow_headers=["*"],
 )
