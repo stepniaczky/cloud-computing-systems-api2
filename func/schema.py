@@ -1,13 +1,13 @@
-import graphene
+import strawberry
 
-class Query(graphene.ObjectType):
-    hello = graphene.String(name=graphene.String(default_value="stranger"))
-    goodbye = graphene.String()
-
-    def resolve_hello(self, info, name):
-        return f'Hello {name}!'
-
-    def resolve_goodbye(self, info):
-        return 'See ya!'
+@strawberry.type
+class Query:
+    @strawberry.field
+    def hello(self, info, name: str = "World") -> str:
+        return f"Hello {name}!"
+    
+    @strawberry.field
+    def goodbye(self, info, name: str = "World") -> str:
+        return f"Goodbye {name}!"
     
     

@@ -1,5 +1,4 @@
 azure-functions
 nest-asyncio
 fastapi
-graphene
-starlette-graphene3
+strawberry-graphql[fastapi]

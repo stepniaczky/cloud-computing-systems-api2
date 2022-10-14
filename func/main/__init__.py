@@ -1,10 +1,9 @@
-import graphene
+import strawberry
 import azure.functions as func
 import nest_asyncio
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from starlette_graphene3 import GraphQLApp, make_graphiql_handler
-
+from strawberry.fastapi import GraphQLRouter
 from schema import Query
 
 nest_asyncio.apply()
@@ -17,9 +16,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-schema = graphene.Schema(query=Query)
-app.add_route("/api", GraphQLApp(schema=schema,
-              on_get=make_graphiql_handler()))
+schema = strawberry.Schema(query=Query)
+graphql_app = GraphQLRouter(schema=schema, graphiql=True)
+app.include_router(graphql_app, prefix="/graphql")
 
 
 async def main(req: func.HttpRequest, context: func.Context) -> func.HttpResponse:
