@@ -2,3 +2,6 @@ azure-functions
 nest-asyncio
 fastapi
 strawberry-graphql[fastapi]
+starlette
+requests
+fastapi-microsoft-identity
